@@ -1,32 +1,4 @@
 modules = ["python-base-3.13"]
 run = "python app.py"
 
-modules = ["python-base-3.13"]
-run = "python app.py"
 [nix]
-channel = "stable-24_05"
-packages = ["haskellPackages.daemons"]
-
-[deployment]
-run = ["sh", "-c", "python app.py"]
-
-[[ports]]
-localPort = 4370
-externalPort = 80
-
-[[ports]]
-localPort = 5000
-externalPort = 5000
-
-[workflows]
-runButton = "Run"
-
-[[workflows.workflow]]
-name = "Run"
-author = 42150728
-mode = "sequential"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "python app.py"
-
