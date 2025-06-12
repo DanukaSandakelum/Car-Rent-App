@@ -9,7 +9,7 @@ def home():
 
 @app.route('/login')
 def login():
-    return "Login page will go here"
+    return render_template('singin.html')
 
 @app.route('/register')
 def register():
