@@ -13,7 +13,7 @@ def login():
 
 @app.route('/register')
 def register():
-    return "Registration page will go here"
+    return render_template('signup.html')
 
 @app.route('/about')
 def about():
