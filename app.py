@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('navbar.html')  # Or your actual template that extends navbar
+    return render_template('home.html')
 
 @app.route('/login')
 def login():
@@ -15,6 +15,10 @@ def login():
 def register():
     return "Registration page will go here"
 
+@app.route('/about')
+def about():
+    return "About page will go here"
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
