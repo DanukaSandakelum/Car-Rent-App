@@ -16,7 +16,7 @@ def register():
         email = request.form.get('email')
         name = request.form.get('name')
         password = request.form.get('password')
-        comfirm_password = request.form.get('confirm_password')
+        comfirm_password = request.form.get('confirm-password')
         phone = request.form.get('phone')
         
         if len(email) < 4:
@@ -24,10 +24,10 @@ def register():
         elif len(name) < 3:
             flash("Name must be greater than 2 character", category="error")
         elif password != comfirm_password:
-            flash("Passwords don't match")
+            flash("Passwords don't match", category="error")
         elif len(password) < 7:
             flash("Password must be at least 7 characters", category="error")
         else:
-            flash("Account created", category="Success")
+            flash("Account created successfully! You can now sign in.", category="Success")
 
     return render_template("signup.html")
