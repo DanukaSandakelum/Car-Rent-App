@@ -2,6 +2,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
+import os
 
 
 db = SQLAlchemy()
@@ -25,16 +26,25 @@ def create_app():
     return app
 
 def Create_database(app):
-    if not path.exists(DB_NAME):
+    # Get absolute path for database
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    db_path = os.path.join(basedir, DB_NAME)
+    
+    print(f"Checking for database at: {db_path}")
+    
+    if not os.path.exists(db_path):
         with app.app_context():
-            db.create_all()
-            print("Created Database!")
+            try:
+                db.create_all()
+                print("Database tables created successfully!")
+            except Exception as e:
+                print(f"Error creating database: {e}")
     else:
         print("Database already exists!")
     
     # Verify the database file was created
-    if path.exists(DB_NAME):
-        print(f"Database file '{DB_NAME}' confirmed to exist")
+    if os.path.exists(db_path):
+        print(f"Database file '{DB_NAME}' confirmed to exist at: {db_path}")
     else:
-        print(f"Warning: Database file '{DB_NAME}' was not created")
+        print(f"Warning: Database file '{DB_NAME}' was not created at: {db_path}")
     
