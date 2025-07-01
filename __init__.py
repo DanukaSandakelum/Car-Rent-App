@@ -14,7 +14,7 @@ def create_app():
 
     db.init_app(app)
 
-    from .viwes import views
+    from .views import views
     from .auth import auth
 
     app.register_blueprint(views, url_prefix='/')
