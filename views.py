@@ -8,3 +8,7 @@ views = Blueprint('views', __name__)
 #@login_required
 def home():
     return render_template("home.html")
+
+@views.route('/Cars.html')  # URL path
+def cars():  # This is the endpoint name
+    return render_template('Cars.html')  # Or your logic to render the Cars.html page
