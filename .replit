@@ -2,10 +2,19 @@ modules = ["python-base-3.13"]
 run = "python app.py"
 
 [workflows]
-runButton = "Run Flask App"
+runButton = "Run"
 
 [[workflows.workflow]]
 name = "Run Flask App"
+author = 42150728
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python app.py"
+
+[[workflows.workflow]]
+name = "Run"
 author = 42150728
 mode = "sequential"
 
